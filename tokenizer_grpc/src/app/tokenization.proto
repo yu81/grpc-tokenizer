@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package sample;
+
+message TokenizeRequest {
+    string text = 1;
+    repeated string pos_filter = 2;
+}
+
+message TokenizeResponse {
+    repeated string tokens = 1;
+}
+
+message TokenDetail {
+    string surface = 1;
+    string pos = 2;
+    string pos_detail_1 = 3;
+    string pos_detail_2 = 4;
+    string pos_detail_3 = 5;
+    string toc = 6;
+    string conjugation = 7;
+    string original_form = 8;
+    string reading = 9;
+    string pronounce = 10;
+}
+
+message TokenizeDetailResponse {
+    repeated TokenDetail tokens = 1;
+}
+
+service TokenizerStream {
+    rpc TokenizerStreamServer (stream TokenizeRequest) returns (stream TokenizeResponse) {
+    }
+}
+service Tokenizer {
+    rpc TokenizerServer (TokenizeRequest) returns (TokenizeResponse) {
+    }
+}
+
+service TokenizerDetailStream {
+    rpc TokenizerDetailStreamServer (stream TokenizeRequest) returns (stream TokenizeDetailResponse) {
+    }
+}
+
+service TokenizerDetail {
+    rpc TokenizerDetailServer (TokenizeRequest) returns (TokenizeDetailResponse) {
+    }
+}
