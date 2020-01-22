@@ -11,7 +11,7 @@ Sentence tokenization server in python using grpc for microservices.
 
 ```shell
 docker build -t tokenizer .
-docker run tokenizer
+docker run -p 6565:6565 tokenizer
 ```
 
 
