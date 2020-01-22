@@ -1,5 +1,6 @@
 # grpc-tokenizer
-Sentence tokenization server in python using grpc for microservices.
+Sentence tokenization server in python using grpc for microservices.  
+This application uses MeCab as tokenizer, and [NEologd](https://github.com/neologd/mecab-ipadic-neologd) as dictionary.
 
 # How to use
 
