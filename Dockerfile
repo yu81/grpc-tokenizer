@@ -13,7 +13,7 @@ RUN apt-get update && \
     apt-get clean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* && \
-    git clone https://github.com/neologd/mecab-ipadic-neologd.git && \
+    git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
     mecab-ipadic-neologd/bin/install-mecab-ipadic-neologd -a -n -y && \
     wget https://bootstrap.pypa.io/get-pip.py && \
     pip install pip -U && \
