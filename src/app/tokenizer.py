@@ -9,7 +9,7 @@ if "Darwin" in platform.system():
 tagger = MeCab.Tagger(neologd)
 
 
-class TokenizationService:
+class MecabTokenizationService:
     def tokenize(self, text: str, detail=False, pofs=("名詞", "形容詞", "動詞")):
         try:
             if not detail:
