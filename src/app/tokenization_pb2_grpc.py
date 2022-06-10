@@ -11,9 +11,9 @@ class TokenizerStreamStub(object):
     def __init__(self, channel):
         """Constructor.
 
-    Args:
-      channel: A grpc.Channel.
-    """
+        Args:
+          channel: A grpc.Channel.
+        """
         self.TokenizerStreamServer = channel.stream_stream(
             "/sample.TokenizerStream/TokenizerStreamServer",
             request_serializer=tokenization__pb2.TokenizeRequest.SerializeToString,
@@ -41,9 +41,7 @@ def add_TokenizerStreamServicer_to_server(servicer, server):
             response_serializer=tokenization__pb2.TokenizeResponse.SerializeToString,
         )
     }
-    generic_handler = grpc.method_handlers_generic_handler(
-        "sample.TokenizerStream", rpc_method_handlers
-    )
+    generic_handler = grpc.method_handlers_generic_handler("sample.TokenizerStream", rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -54,9 +52,9 @@ class TokenizerStub(object):
     def __init__(self, channel):
         """Constructor.
 
-    Args:
-      channel: A grpc.Channel.
-    """
+        Args:
+          channel: A grpc.Channel.
+        """
         self.TokenizerServer = channel.unary_unary(
             "/sample.Tokenizer/TokenizerServer",
             request_serializer=tokenization__pb2.TokenizeRequest.SerializeToString,
@@ -84,9 +82,7 @@ def add_TokenizerServicer_to_server(servicer, server):
             response_serializer=tokenization__pb2.TokenizeResponse.SerializeToString,
         )
     }
-    generic_handler = grpc.method_handlers_generic_handler(
-        "sample.Tokenizer", rpc_method_handlers
-    )
+    generic_handler = grpc.method_handlers_generic_handler("sample.Tokenizer", rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -97,9 +93,9 @@ class TokenizerDetailStreamStub(object):
     def __init__(self, channel):
         """Constructor.
 
-    Args:
-      channel: A grpc.Channel.
-    """
+        Args:
+          channel: A grpc.Channel.
+        """
         self.TokenizerDetailStreamServer = channel.stream_stream(
             "/sample.TokenizerDetailStream/TokenizerDetailStreamServer",
             request_serializer=tokenization__pb2.TokenizeRequest.SerializeToString,
@@ -127,9 +123,7 @@ def add_TokenizerDetailStreamServicer_to_server(servicer, server):
             response_serializer=tokenization__pb2.TokenizeDetailResponse.SerializeToString,
         )
     }
-    generic_handler = grpc.method_handlers_generic_handler(
-        "sample.TokenizerDetailStream", rpc_method_handlers
-    )
+    generic_handler = grpc.method_handlers_generic_handler("sample.TokenizerDetailStream", rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -140,9 +134,9 @@ class TokenizerDetailStub(object):
     def __init__(self, channel):
         """Constructor.
 
-    Args:
-      channel: A grpc.Channel.
-    """
+        Args:
+          channel: A grpc.Channel.
+        """
         self.TokenizerDetailServer = channel.unary_unary(
             "/sample.TokenizerDetail/TokenizerDetailServer",
             request_serializer=tokenization__pb2.TokenizeRequest.SerializeToString,
@@ -170,7 +164,5 @@ def add_TokenizerDetailServicer_to_server(servicer, server):
             response_serializer=tokenization__pb2.TokenizeDetailResponse.SerializeToString,
         )
     }
-    generic_handler = grpc.method_handlers_generic_handler(
-        "sample.TokenizerDetail", rpc_method_handlers
-    )
+    generic_handler = grpc.method_handlers_generic_handler("sample.TokenizerDetail", rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
