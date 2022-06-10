@@ -54,9 +54,7 @@ class TokenizerServicer(tokenization_pb2_grpc.TokenizerServicer):
         return tokenization_pb2.TokenizeResponse(tokens=tokens)
 
 
-class TokenizerDetailStreamServicer(
-    tokenization_pb2_grpc.TokenizerDetailStreamServicer
-):
+class TokenizerDetailStreamServicer(tokenization_pb2_grpc.TokenizerDetailStreamServicer):
     def __init__(self):
         pass
 
@@ -74,9 +72,7 @@ class TokenizerDetailStreamServicer(
             for token in tokens:
                 token_details.append(token_to_detail_response(token))
 
-            reply_msgs.append(
-                tokenization_pb2.TokenizeDetailResponse(tokens=token_details)
-            )
+            reply_msgs.append(tokenization_pb2.TokenizeDetailResponse(tokens=token_details))
             for message in reply_msgs:
                 yield message
 
@@ -105,16 +101,10 @@ def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
 
     tokenization_pb2_grpc.add_TokenizerServicer_to_server(TokenizerServicer(), server)
-    tokenization_pb2_grpc.add_TokenizerStreamServicer_to_server(
-        TokenizerStreamServicer(), server
-    )
+    tokenization_pb2_grpc.add_TokenizerStreamServicer_to_server(TokenizerStreamServicer(), server)
 
-    tokenization_pb2_grpc.add_TokenizerDetailServicer_to_server(
-        TokenizerDetailServicer(), server
-    )
-    tokenization_pb2_grpc.add_TokenizerDetailStreamServicer_to_server(
-        TokenizerDetailStreamServicer(), server
-    )
+    tokenization_pb2_grpc.add_TokenizerDetailServicer_to_server(TokenizerDetailServicer(), server)
+    tokenization_pb2_grpc.add_TokenizerDetailStreamServicer_to_server(TokenizerDetailStreamServicer(), server)
 
     server.add_insecure_port("[::]:6565")
     server.start()
