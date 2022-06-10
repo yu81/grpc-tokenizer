@@ -34,7 +34,7 @@ class TokenizerStreamServicer(tokenization_pb2_grpc.TokenizerStreamServicer):
         pass
 
     def TokenizerStreamServer(self, request_iterator, context):
-        t = tokenizer.TokenizationService()
+        t = tokenizer.MecabTokenizationService()
         for new_msg in request_iterator:
             reply_msgs = []
             tokens = t.tokenize(new_msg.text)
@@ -48,7 +48,7 @@ class TokenizerServicer(tokenization_pb2_grpc.TokenizerServicer):
         pass
 
     def TokenizerServer(self, request, context):
-        t = tokenizer.TokenizationService()
+        t = tokenizer.MecabTokenizationService()
         pos_filter = request.pos_filter
         tokens = t.tokenize(request.text)
         return tokenization_pb2.TokenizeResponse(tokens=tokens)
@@ -61,7 +61,7 @@ class TokenizerDetailStreamServicer(
         pass
 
     def TokenizerDetailStreamServer(self, request_iterator, context):
-        t = tokenizer.TokenizationService()
+        t = tokenizer.MecabTokenizationService()
         for new_msg in request_iterator:
             reply_msgs = []
             pofs = new_msg.pos_filter
@@ -86,7 +86,7 @@ class TokenizerDetailServicer(tokenization_pb2_grpc.TokenizerDetailServicer):
         pass
 
     def TokenizerDetailServer(self, request, context):
-        t = tokenizer.TokenizationService()
+        t = tokenizer.MecabTokenizationService()
         pofs = request.pos_filter
         tokens = []
         if len(pofs) > 0:
